@@ -1,0 +1,346 @@
+---
+title: Contribution Title
+title-running: Short Title
+author-running: Short Title
+motto: This is my motto.
+format:
+  springer-nature-chapter-pdf:
+    keep-tex: true
+  springer-nature-chapter-html: default
+author:
+  - name: Sarah Malloc
+    affiliations:
+      - name: An Organization
+        department: The Department
+        address: 1 Main St
+        city: Boston
+        country: USA
+        postal-code: 02210-1022
+      - A second affilication
+    orcid: 0000-0000-0000-0000
+    email: sm@example.org
+    url: https://example.org/
+  - name: Eliza Dealloc
+    affiliations:
+      - Another Affiliation
+abstract: |
+  Each chapter should be preceded by an abstract (no more than 200 words)
+  that summarizes the content. The abstract will appear online and be
+  available with unrestricted access, allowing unregistered users to read
+  it as a teaser for the complete chapter.
+keywords: [Key1, Key2, Key 3]
+bibliography: bibliography.bib
+---
+
+# Section Heading {#sec-1}
+
+Use this Quarto extension together with the `springer-nature-chapter-pdf`
+format to style the various elements of your chapter content.
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on,
+please use Quarto's native cross-reference syntax (`@sec-1`, `@fig-1`,
+`@tbl-1`, `@eq-mult`) for all of your cross-references, and citation-key
+syntax (e.g. `[@CameronTrivedi2013]`) for your bibliographic references.
+
+# Section Heading {#sec-2}
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference and citation syntax for all of your
+cross-references and citations, as described in @sec-1.
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+Use a `$$ ... $$` display-math block to typeset your equations, e.g.
+
+$$
+a \times b = c
+$$ {#eq-mult}
+
+however, for multiline equations we recommend using the `aligned`
+environment[^vecphys]:
+
+$$
+\begin{aligned}
+\left|\nabla U_{\alpha}^{\mu}(y)\right| &\le\frac1{d-\alpha}\int
+\left|\nabla\frac1{|\xi-y|^{d-\alpha}}\right|\,d\mu(\xi) =
+\int \frac1{|\xi-y|^{d-\alpha+1}} \,d\mu(\xi)  \\
+&=(d-\alpha+1) \int\limits_{d(y)}^\infty
+\frac{\mu(B(y,r))}{r^{d-\alpha+2}}\,dr \le (d-\alpha+1)
+\int\limits_{d(y)}^\infty \frac{r^{d-\alpha}}{r^{d-\alpha+2}}\,dr
+\end{aligned}
+$$ {#eq-example}
+
+[^vecphys]: In physics texts please activate the class option `vecphys` to
+depict your vectors in boldface-italic type, as is customary for a wide
+range of physical subjects.
+
+## Subsection Heading {#sec-subsec2}
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-2.
+
+> Please do not use quotation marks when quoting texts! Simply use a
+> blockquote -- it will automatically be rendered in line with the
+> preferred layout.
+
+### Subsubsection Heading
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-subsec2, see also
+@fig-1.^[If you copy text passages, figures, or tables from other works,
+you must obtain permission from the copyright holder (usually the original
+publisher). Please enclose the signed permission with the manuscript. The
+sources must be acknowledged either in the captions, as footnotes, or in a
+separate section of the book.]
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+![Sample picture file](images/figure.pdf){#fig-1 fig-alt="This is figure Alt-Text for Figure 1." width=80%}
+
+#### Paragraph Heading
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-2.
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+For typesetting numbered lists we recommend using a Markdown ordered list
+-- it will automatically be rendered in line with the preferred layout.
+
+1. Livelihood and survival mobility are oftentimes outcomes of uneven
+   socioeconomic development.
+   i. Livelihood and survival mobility are oftentimes outcomes of uneven
+      socioeconomic development.
+   ii. Livelihood and survival mobility are oftentimes outcomes of uneven
+       socioeconomic development.
+2. Livelihood and survival mobility are oftentimes outcomes of uneven
+   socioeconomic development.
+
+In order to avoid simply listing headings of different levels we recommend
+to let every heading be followed by at least a short passage of text. Use
+Quarto's cross-reference syntax for all of your cross-references and
+citations as has already been described in @sec-2, see also @tbl-1.
+
+For unnumbered lists we recommend using a Markdown bullet list -- it will
+automatically be rendered in line with the preferred layout.
+
+- Livelihood and survival mobility are oftentimes outcomes of uneven
+  socioeconomic development, cf. @tbl-1.
+  - Livelihood and survival mobility are oftentimes outcomes of uneven
+    socioeconomic development.
+  - Livelihood and survival mobility are oftentimes outcomes of uneven
+    socioeconomic development.
+- Livelihood and survival mobility are oftentimes outcomes of uneven
+  socioeconomic development.
+
+[Run-in Heading Boldface Version]{.runinhead} Use Quarto's cross-reference
+syntax for all of your cross-references and citations as has already been
+described in @sec-2.
+
+[Run-in Heading Boldface and Italic Version]{.subruninhead} Use Quarto's
+cross-reference syntax for all of your cross-references and citations as
+has already been described in @sec-2.
+
+[Run-in Heading Displayed Version]{.subsubruninhead} Use Quarto's
+cross-reference syntax for all of your cross-references and citations as
+has already been described in @sec-2.
+
+| Classes | Subclass | Length | Action Mechanism |
+|---|---|---|---|
+| Translation | mRNA^a^ | 22 (19--25) | Translation repression, mRNA cleavage |
+| Translation | mRNA cleavage | 21 | mRNA cleavage |
+| Translation | mRNA | 21--22 | mRNA cleavage |
+| Translation | mRNA | 24--26 | Histone and DNA Modification |
+
+: Please write your table caption here {#tbl-1}
+
+^a^ Table footnote (with superscript)
+
+# Section Heading {#sec-3}
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-2.
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+If you want to list definitions or the like we recommend using a Markdown
+definition list -- it will automatically be rendered in line with the
+preferred layout.
+
+Type 1
+:   That addresses central themes pertaining to migration, health, and
+    disease. In @sec-1, Wilson discusses the role of human migration in
+    infectious disease distributions and patterns.
+
+Type 2
+:   That addresses central themes pertaining to migration, health, and
+    disease. In @sec-subsec2, Wilson discusses the role of human migration
+    in infectious disease distributions and patterns.
+
+## Subsection Heading
+
+In order to avoid simply listing headings of different levels we recommend
+to let every heading be followed by at least a short passage of text. Use
+Quarto's cross-reference syntax for all of your cross-references and
+citations as has already been described in @sec-2.
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+::: {.svgraybox}
+If you want to emphasize complete paragraphs of text we recommend using
+the `.svgraybox` div, enabled by the `graybox` document class option. This
+will produce a 15 percent screened box "behind" your text.
+
+If you want to emphasize complete paragraphs of text we recommend using
+the `.svgraybox` div. This will produce a 15 percent screened box "behind"
+your text.
+:::
+
+### Subsubsection Heading
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-2.
+
+Please note that the first line of text that follows a heading is not
+indented, whereas the first lines of all subsequent paragraphs are.
+
+::: {.theorem}
+Theorem text goes here.
+:::
+
+::: {.definition}
+Definition text goes here.
+:::
+
+::: {.sn-proof}
+Proof text goes here.
+:::
+
+#### Paragraph Heading
+
+Instead of simply listing headings of different levels we recommend to let
+every heading be followed by at least a short passage of text. Further on
+please use Quarto's cross-reference syntax for all of your cross-references
+and citations as has already been described in @sec-2.
+
+Note that the first line of text that follows a heading is not indented,
+whereas the first lines of all subsequent paragraphs are.
+
+::: {.trailer}
+If you want to emphasize complete paragraphs of text in a Trailer Head we
+recommend using a `.trailer` div.
+:::
+
+::: {.questype}
+If you want to emphasize complete paragraphs of text in a Questions block
+we recommend using a `.questype` div.
+:::
+
+::: {.important}
+If you want to emphasize complete paragraphs of text in an Important block
+we recommend using an `.important` div.
+:::
+
+::: {.warning}
+If you want to emphasize complete paragraphs of text in an Attention block
+we recommend using a `.warning` div.
+:::
+
+::: {.programcode}
+```
+print("hello")
+```
+:::
+
+::: {.tips}
+If you want to emphasize complete paragraphs of text in a Tips block we
+recommend using a `.tips` div.
+:::
+
+::: {.overview}
+If you want to emphasize complete paragraphs of text in an Overview block
+we recommend using an `.overview` div.
+:::
+
+::: {.backgroundinformation}
+If you want to emphasize complete paragraphs of text in a Background
+Information block we recommend using a `.backgroundinformation` div.
+:::
+
+::: {.legaltext}
+If you want to emphasize complete paragraphs of text in a Legal Text block
+we recommend using a `.legaltext` div.
+:::
+
+::: {.acknowledgement}
+If you want to include acknowledgments of assistance and the like at the
+end of an individual chapter, please use the `.acknowledgement` div -- it
+will automatically be rendered in line with the preferred layout.
+:::
+
+::: {.ethics title="Competing Interests"}
+Please declare any competing interests in the context of your chapter. The
+following sentences can be regarded as examples.\
+This study was funded by \[X\] \[grant number X\].\
+\[Author A\] has received a research grant from \[Company W\].\
+\[Author B\] has received a speaker honorarium from \[Company X\] and owns
+stock in \[Company Y\].\
+\[Author C\] is a member of \[committee Z\].\
+The authors have no conflicts of interest to declare that are relevant to
+the content of this chapter.
+:::
+
+::: {.ethics title="Ethics Approval"}
+If your chapter includes primary studies with humans please declare the
+adherence of ethical standards. Example text: This study was performed in
+line with the principles of the Declaration of Helsinki. Approval was
+granted by the Ethics Committee of University B (Date.../No. ...).\
+In addition, for human participants, authors are required to include a
+statement that informed consent (to participate and/or to publish) was
+obtained from individual participants or parents/guardians if the
+participant is a minor or incapable.\
+If animals are studied, authors should make sure that the legal
+requirements or guidelines in the country and/or state or province for the
+care and use of animals have been followed, or specify that no ethics
+approval was required.
+:::
+
+# Appendix {.unnumbered}
+
+When placed at the end of a chapter or contribution (as opposed to at the
+end of the book), the numbering of tables, figures, and equations in the
+appendix section continues on from that in the main text.
+
+$$
+a \times b = c
+$$
+
+# Styling of References {.unnumbered}
+
+References may be cited in the text either by number (preferred) or by
+author/year. Make sure that all references from the list are cited in the
+text. If the citation in the text is numbered, the reference list should
+be arranged in ascending order. If the citation in the text is
+author/year, the reference list should be sorted alphabetically.
+
+Examples of the basic Springer Nature style used in publications on a wide
+range of subjects such as Computer Science, Economics, Engineering,
+Geosciences, Life Sciences, Medicine, and Biomedicine are
+[@Broy2002; @Hamburger1995; @CameronTrivedi2013].

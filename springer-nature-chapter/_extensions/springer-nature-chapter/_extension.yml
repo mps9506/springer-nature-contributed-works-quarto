@@ -1,0 +1,32 @@
+title: Springer-nature-chapter
+author: mps9506
+version: 1.0.0
+quarto-required: ">=1.7.0"
+contributes:
+  formats:
+    common:
+      toc: false
+      # SNmult/SNmono number sections (1, 1.1, ...) within each chapter
+      numbersections: true
+      filters:
+        - springer-nature-chapter.lua
+    pdf:
+      documentclass: SNmult
+      classoption: [graybox]
+      # newtxtext/newtxmath (required by the SN style guide) are classic
+      # pdfTeX packages and conflict with xelatex's default unicode-math
+      pdf-engine: pdflatex
+      template: template.tex
+      include-in-header: header.tex
+      # natbib + the "basic" SN reference style (wide range of subjects);
+      # override biblio-style with spmpsci (math/physics/stats/CS) or
+      # spphys (physics) as needed -- see style_guide/references.tex
+      cite-method: natbib
+      biblio-style: spbasic
+      format-resources:
+        - SNmult.cls
+        - spbasic.bst
+        - spmpsci.bst
+        - spphys.bst
+
+

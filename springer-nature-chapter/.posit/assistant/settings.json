@@ -1,0 +1,12 @@
+{
+  "permission": {
+    "bash": {
+      "quarto render *": "allow",
+      "echo *": "allow"
+    },
+    "edit": {
+      "*.yml": "allow",
+      "*.tex": "allow"
+    }
+  }
+}

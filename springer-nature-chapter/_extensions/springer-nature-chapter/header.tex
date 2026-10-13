@@ -1,0 +1,21 @@
+% Packages required by the Springer Nature SNmult/SNmono document classes
+% that are not already supplied by Quarto's default LaTeX preamble.
+\usepackage{type1cm}         % activate if mathptmx/helvet/courier are
+                              % not available on your system
+\usepackage{makeidx}         % allows index generation
+\usepackage{multicol}        % used for the two-column index
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{newtxtext}       % Times-like text font, per SN style guide
+\usepackage[varvw]{newtxmath}% Times-like math font, per SN style guide
+
+\makeindex                   % used for the subject index; use svind.ist
+                              % with your makeindex program
+
+% SNmult.cls defines theorem, claim, case, conjecture, corollary,
+% definition, example, exercise, lemma, note, problem, property,
+% proposition, question, solution, and remark via \spnewtheorem, but
+% leaves its own `proof` environment commented out. Complete it here
+% (matching the commented-out line in SNmult.cls) so ::: {.proof} works.
+\makeatletter
+\@ifundefined{proof}{\spnewtheorem*{proof}{\proofname}{\itshape}{\rmfamily}}{}
+\makeatother

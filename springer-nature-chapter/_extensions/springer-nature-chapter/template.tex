@@ -1,0 +1,141 @@
+$passoptions.latex()$
+\documentclass[
+$for(babel-otherlangs)$
+  $babel-otherlangs$,
+$endfor$
+$if(babel-lang)$
+  $babel-lang$,
+$endif$
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$paper,
+$endif$
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{$documentclass$}
+
+\usepackage{xcolor}
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+% Note: amssymb is intentionally omitted -- the SNmult/SNmono newtxmath
+% font package (loaded via header.tex) provides equivalent symbols and
+% conflicts with amssymb's definitions (e.g. \arrowvert).
+\usepackage{amsmath}
+$--
+$-- Springer Nature contributed-volume chapters (SNmult) number their
+$-- sections (1, 1.1, 1.1.1, ...); only suppress numbering if the user
+$-- explicitly asks for it.
+$--
+$if(numbersections)$
+\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+$else$
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+$endif$
+$fonts.latex()$
+$font-settings.latex()$
+$common.latex()$
+$after-header-includes.latex()$
+$hypersetup.latex()$
+%
+% Springer Nature title-block commands (\title*, \author, \institute,
+% \abstract*/\abstract, \motto, \keywords, \orcidID, \titlerunning,
+% \authorrunning) are provided by the SNmult/SNmono document classes.
+%
+$if(motto)$
+\motto{$motto$}
+$endif$
+$if(title)$
+\title*{$title$}
+$endif$
+$if(title-running)$
+\titlerunning{$title-running$}
+$endif$
+$if(by-author)$
+\author{$for(by-author)$$it.name.literal$$if(it.orcid)$\orcidID{$it.orcid$}$endif$$sep$ and\\ $endfor$}
+$endif$
+$if(author-running)$
+\authorrunning{$author-running$}
+$endif$
+$if(by-author)$
+\institute{$for(by-author)$$it.name.literal$ \at $for(it.affiliations)$$it.name$$if(it.department)$, $it.department$$endif$$if(it.address)$, $it.address$$endif$$if(it.city)$, $it.city$$endif$$if(it.country)$, $it.country$$endif$$sep$ and $endfor$$if(it.email)$ \email{$it.email$}$endif$$sep$
+\and $endfor$}
+$endif$
+\date{$date$}
+
+\begin{document}
+$if(has-frontmatter)$
+\frontmatter
+$endif$
+$if(title)$
+\maketitle
+$if(abstract)$
+\abstract*{$abstract$$if(keywords)$
+\keywords{$for(keywords)$$keywords$$sep$ $$\cdot$$ $endfor$}$endif$}
+
+\abstract{$abstract$$if(keywords)$
+\keywords{$for(keywords)$$keywords$$sep$ $$\cdot$$ $endfor$}$endif$}
+$endif$
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+{
+$if(colorlinks)$
+\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(linestretch)$
+\setstretch{$linestretch$}
+$endif$
+$if(has-frontmatter)$
+\mainmatter
+$endif$
+$body$
+
+$if(has-frontmatter)$
+\backmatter
+$endif$
+$if(nocite-ids)$
+\nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
+$endif$
+$if(natbib)$
+$if(bibliography)$
+$if(biblio-title)$
+$if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}
