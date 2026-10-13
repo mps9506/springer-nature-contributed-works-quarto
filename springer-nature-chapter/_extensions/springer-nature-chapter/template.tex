@@ -54,8 +54,8 @@ $endif$
 $if(title-running)$
 \titlerunning{$title-running$}
 $endif$
-$if(by-author)$
-\author{$for(by-author)$$it.name.literal$$if(it.orcid)$\orcidID{$it.orcid$}$endif$$sep$ and\\ $endfor$}
+$if(author-names-tex)$
+\author{$author-names-tex$}
 $endif$
 $if(author-running)$
 \authorrunning{$author-running$}

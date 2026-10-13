@@ -204,6 +204,61 @@ local function make_Div(theorem_envs)
   end
 end
 
+-- Renders a single by-author entry's name for \author{...}, including its
+-- \orcidID{...} suffix if present.
+local function author_name_latex(author)
+  local name = author.name and author.name.literal
+  local text = name and pandoc.utils.stringify(name) or ""
+  if author.orcid then
+    text = text .. "\\orcidID{" .. pandoc.utils.stringify(author.orcid) .. "}"
+  end
+  return text
+end
+
+-- Joins a list of (already-rendered) name strings into natural English
+-- prose: "A" / "A and B" / "A, B, and C", with a forced LaTeX line break
+-- (matching style_guide/author.tex's own "Name1 and\\ Name2" convention)
+-- at each join point. Only the final join uses "and" -- previously every
+-- join used "and", which reads oddly for three or more authors.
+local function join_author_names(names)
+  local n = #names
+  if n == 0 then
+    return nil
+  elseif n == 1 then
+    return names[1]
+  elseif n == 2 then
+    return names[1] .. " and\\\\ " .. names[2]
+  else
+    local head = {}
+    for i = 1, n - 1 do
+      head[#head + 1] = names[i]
+    end
+    return table.concat(head, ",\\\\ ") .. ", and\\\\ " .. names[n]
+  end
+end
+
+-- Builds the \author{...}-ready raw LaTeX string from the normalized
+-- `by-author` metadata, stored back onto the metadata as `author-names-tex`
+-- for the template to use directly (avoiding a per-pair "and" separator).
+local function build_author_names(meta)
+  local by_author = meta and meta["by-author"]
+  if not by_author then
+    return nil
+  end
+
+  local names = {}
+  for _, author in ipairs(by_author) do
+    names[#names + 1] = author_name_latex(author)
+  end
+
+  local joined = join_author_names(names)
+  if not joined then
+    return nil
+  end
+
+  return pandoc.MetaInlines({ pandoc.RawInline("latex", joined) })
+end
+
 local function Span(span)
   local class = match_class(span.classes, runin_commands)
   if class then
@@ -216,6 +271,7 @@ local function Span(span)
 end
 
 local function Pandoc(doc)
+  doc.meta["author-names-tex"] = build_author_names(doc.meta)
   local theorem_envs = build_theorem_envs(doc.meta)
   return doc:walk({ Div = make_Div(theorem_envs), Span = Span })
 end
