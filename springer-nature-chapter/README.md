@@ -1,14 +1,17 @@
 
-# <%= title %>
+# springer-nature-chapter
+
+A Quarto template for latex based book chapter for Springer Nature. See source instructions here:
+https://www.springernature.com/gp/authors/publish-a-book/manuscript-guidelines
+
 
 ## Creating a New Article
 
 To create a new article using this format:
 
-*TODO*: Replace the `<github-organization>` with your GitHub organization.
 
 ```bash
-quarto use template <github-organization>/<%= filesafename %>
+quarto use template mps9506/springer-nature-contributed-works-quarto/springer-nature-chapter
 ```
 
 This will create a new directory with an example document that uses this format.
@@ -17,17 +20,15 @@ This will create a new directory with an example document that uses this format.
 
 To add this format to an existing document:
 
-*TODO*: Replace the `<github-organization>` with your GitHub organization.
-
 ```bash
-quarto add <github-organization>/<%= filesafename %>
+quarto add mps9506/springer-nature-contributed-works-quarto/springer-nature-chapter
 ```
 
 Then, add the format to your document options:
 
 ```yaml
 format:
-  <%= filesafename %>-pdf: default
+  springer-nature-chapter-pdf: default
 ```    
 
 ## Options
